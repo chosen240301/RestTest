@@ -1,3 +1,6 @@
+package rest;
+
+import org.json.JSONObject;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -7,11 +10,11 @@ import java.util.List;
 /**
  * Created by Aliaksei on 22.11.2017.
  */
-@Path("message")
+@Path("/message")
 public class MessageResource {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces({MediaType.APPLICATION_JSON})
     public List<Message> getAllMessages(){
             List<Message> messages = Data.getData();
             return messages;
@@ -24,6 +27,7 @@ public class MessageResource {
     public Message getMessageByID(@PathParam("id") int id)  {
         Message message = Data.findbyID(id);
         return message;
+
 
     }
 

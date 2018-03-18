@@ -1,3 +1,4 @@
+package rest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,42 +20,41 @@ public class Data {
         data.add(new Message(4, "HI!", "pam param"));
     }
 
-    public static List<Message> getData(){
+    public static List<Message> getData() {
         return data;
     }
 
-    public static Message findbyID(int id){
-        for(Message ms:data){
-            if(ms.getMessageId()==id){
+    public static Message findbyID(int id) {
+        for (Message ms : data) {
+            if (ms.getMessageId() == id) {
                 return ms;
             }
 
         }
-        return  null;
+        return null;
     }
 
 
-    public static boolean deletebyID(int id){
-        for(Message ms: data){
-            if(ms.getMessageId()==id){
-                data.remove(ms.getMessageId());
-                return true;
-            }
+    public static boolean deletebyID(int id) {
+        Message message = findbyID(id);
+        if (message == null)
+            return false;
+        data.remove(message);
+        return true;
+    }
+
+    public static void createMessage(Message message) {
+        for (Message ms : data) {
+            if (message.getMessageId() == ms.getMessageId())
+                return;
         }
-        return false;
+        data.add(message);
+
     }
 
-    public static void createMessage(Message message){
-        for(Message ms:data){
-            if(message.getMessageId()!=ms.getMessageId()){
-                data.add(message);
-            }
-        }
-    }
-
-    public static boolean update(Message message){
-        for(Message ms:data){
-            if(message.getMessageId()==ms.getMessageId()){
+    public static boolean update(Message message) {
+        for (Message ms : data) {
+            if (message.getMessageId() == ms.getMessageId()) {
                 ms.setMessageText(message.getMessageText());
                 ms.setMessageTitle(message.getMessageTitle());
                 return true;

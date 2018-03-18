@@ -1,14 +1,10 @@
-
-
-import org.glassfish.jersey.client.ClientConfig;
+package rest;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.client.Invocation;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import java.net.URI;
 import java.util.List;
@@ -26,7 +22,7 @@ public class RestClient {
         Response response = invokation.invoke();*/
         GenericType<List<Message>> genericType = new GenericType<List<Message>>() {
         };
-        List<Message> messages = target.path("rest").path("message").request(MediaType.APPLICATION_JSON).get(genericType);
+        List<Message> messages = target.path("rest").path("message").request(MediaType.APPLICATION_XML).get(genericType);
 
         for (Message temp : messages) {
             System.out.println(temp);

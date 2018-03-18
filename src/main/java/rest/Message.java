@@ -1,3 +1,7 @@
+package rest;
+
+import java.io.Serializable;
+
 /**
  * Created by Aliaksei on 22.11.2017.
  */
@@ -5,7 +9,7 @@
 //package main.java;
 
 
-public class Message {
+public class Message implements Serializable {
     private int messageId;
     private String messageTitle;
     private String messageText;
@@ -45,7 +49,7 @@ public class Message {
 
     @Override
     public String toString() {
-        return "Message{" +
+        return "rest.Message{" +
                 "messageId=" + messageId +
                 ", messageTitle='" + messageTitle + '\'' +
                 ", messageText='" + messageText + '\'' +
